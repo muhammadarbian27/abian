@@ -1,0 +1,31 @@
+const int Trigpin=8;
+  const int Echopin=9;
+  long timer;
+  int jarak;
+
+
+
+void setup() {
+Serial.begin(9600);
+pinMode(Echopin, OUTPUT);
+pinMode(Trigpin, INPUT);
+
+}
+  
+void loop() {
+
+  digitalWrite(Trigpin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(Echopin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(Trigpin, LOW);
+
+  timer=pulseIn(Echopin, HIGH);
+  jarak=timer/58;
+  delay(1000);
+
+  Serial.print("jarak=");
+  Serial.print(jarak);
+  Serial.print("cm");
+  Serial.println();
+}
